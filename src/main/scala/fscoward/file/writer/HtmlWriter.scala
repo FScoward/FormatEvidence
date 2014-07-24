@@ -28,9 +28,19 @@ object HtmlWriter {
    * */
   private def mkLogSource(title: String, data: String) = {
     s"""
-      |<h3>$title</h3>
-      |<div class='log' id='#$title'>
-      |  ${data.replaceAll("\\r\\n|\\r|\\n", "<br>")}
+      |<div class="panel panel-default">
+      |  <div class="panel-heading">
+      |    <h4 class="panel-title">
+      |      <a data-toggle="collapse" data-parent="#accordion" href="#$title">
+      |        $title
+      |      </a>
+      |    </h4>
+      |  </div>
+      |  <div id="$title" class="panel-collapse collapse">
+      |    <div class="panel-body">
+      |      ${data.replaceAll("\\r\\n|\\r|\\n", "<br>")}
+      |    </div>
+      |  </div>
       |</div>
     """.stripMargin
   }
@@ -41,7 +51,7 @@ object HtmlWriter {
    * @param logs ログのリスト
    * */
   private def mkLogSection(logs: List[Log]) = {
-    logs.map(log => mkLogSource(log.title, log.data)).mkString
+    logs.map(log => mkLogSource(log.title.replaceAll(".log", "_log"), log.data)).mkString
   }
 
   /**
@@ -54,13 +64,22 @@ object HtmlWriter {
     val logSection = mkLogSection(logs.get) // よろしくない
 
     val source = s"""
-      |<html>
+      |<!DOCTYPE html>
+      |<html lang="ja">
       |  <head>
       |    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       |    <title>$title</title>
+      |    <link rel="stylesheet" type="text/css" href="./src/main/resources/bootstrap-3.2.0-dist/css/bootstrap.css">
+      |    <script type="text/javascript" src="./src/main/resources/bootstrap-3.2.0-dist/js/jquery-2.1.1.js"></script>
+      |    <script type="text/javascript" src="./src/main/resources/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
       |  </head>
       |  <body>
-         $logSection
+      |  <div class="well">$title</div>
+      |  <div class="container">
+      |    <div class="panel-group" id="accordion">
+             $logSection
+      |    </div>
+      |  </div>
       |  </body>
       |</html>
     """.stripMargin

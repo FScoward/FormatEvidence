@@ -1,21 +1,50 @@
 
-<html>
+<!DOCTYPE html>
+<html lang="ja">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>テストケース1</title>
+    <link rel="stylesheet" type="text/css" href="./src/main/resources/bootstrap-3.2.0-dist/css/bootstrap.css">
+    <script type="text/javascript" src="./src/main/resources/bootstrap-3.2.0-dist/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="./src/main/resources/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
   </head>
   <body>
-         
-<h3>sample.log</h3>
-<div class='log' id='#sample.log'>
-  test<br>sample<br>IllegalArgumentException
+  <div class="well">テストケース1</div>
+  <div class="container">
+    <div class="panel-group" id="accordion">
+             
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#sample_log">
+        sample_log
+      </a>
+    </h4>
+  </div>
+  <div id="sample_log" class="panel-collapse collapse">
+    <div class="panel-body">
+      test<br>sample<br>IllegalArgumentException
+    </div>
+  </div>
 </div>
     
-<h3>sample2.log</h3>
-<div class='log' id='#sample2.log'>
-  sample2<br><br>ああふぇあｗ<br>ふぇあうぃおｆｌじゃうぇ
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#sample2_log">
+        sample2_log
+      </a>
+    </h4>
+  </div>
+  <div id="sample2_log" class="panel-collapse collapse">
+    <div class="panel-body">
+      sample2<br><br>ああふぇあｗ<br>ふぇあうぃおｆｌじゃうぇ
+    </div>
+  </div>
 </div>
     
+    </div>
+  </div>
   </body>
 </html>
     
